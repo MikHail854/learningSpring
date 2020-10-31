@@ -25,7 +25,8 @@
 
 
     <bean id="musicPlayer"
-        class="ru.chigurov.MusicPlayer">
+        class="ru.chigurov.MusicPlayer"
+        scope="prototype">
 
         <property name="musicList">
             <list>
