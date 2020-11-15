@@ -16,6 +16,10 @@ public class Computer {
 
     @Override
     public String toString() {
-        return "Computer " + id + " " + musicPlayer.playMusic();
+        System.out.println("Computer " + id + ":");
+        System.out.println(musicPlayer.playMusic(EnumMusic.CLASSICAL));
+        System.out.println(musicPlayer.playMusic(EnumMusic.ROCK));
+        System.out.println(musicPlayer.playMusic(EnumMusic.JAZZ));
+        return "";
     }
 }

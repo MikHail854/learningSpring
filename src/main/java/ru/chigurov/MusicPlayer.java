@@ -1,25 +1,48 @@
 package ru.chigurov;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
 import javax.swing.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
+
+import static ru.chigurov.EnumMusic.CLASSICAL;
+import static ru.chigurov.EnumMusic.ROCK;
 
 @Component
 public class MusicPlayer {
     private ClassicalMusic classicalMusic;
     private RockMusic rockMusic;
+    private JazzMusic jazzMusic;
 
     @Autowired
-    public MusicPlayer(ClassicalMusic classicalMusic, RockMusic rockMusic) {
+    public MusicPlayer(ClassicalMusic classicalMusic, RockMusic rockMusic, JazzMusic jazzMusic) {
         this.classicalMusic = classicalMusic;
         this.rockMusic = rockMusic;
+        this.jazzMusic = jazzMusic;
     }
 
-    public String playMusic(){
-        return "Playing: " + rockMusic.getSong();
+
+    public String playMusic(EnumMusic enumMusic){
+        Random random = new Random();
+
+        // случайное целое число между 0 и 2
+        int randomNumber = random.nextInt(3);
+
+        switch (enumMusic){
+            case CLASSICAL:
+                return "Playing: " + classicalMusic.getSong().get(randomNumber);
+            case ROCK:
+                return "Playing: " + rockMusic.getSong().get(randomNumber);
+            case JAZZ:
+                return "Playing: " + jazzMusic.getSong().get(randomNumber);
+            default:
+                return "Playing: no music";
+        }
+
     }
 
     /*private List<Music> musicList = new ArrayList<>();
