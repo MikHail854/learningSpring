@@ -3,12 +3,10 @@ package ru.chigurov;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-@Component
 public class Computer {
     private int id;
     private MusicPlayer musicPlayer;
 
-    @Autowired
     public Computer(MusicPlayer musicPlayer) {
         this.id = 1;
         this.musicPlayer = musicPlayer;
@@ -16,10 +14,6 @@ public class Computer {
 
     @Override
     public String toString() {
-        System.out.println("Computer " + id + ":");
-        System.out.println(musicPlayer.playMusic(EnumMusic.CLASSICAL));
-        System.out.println(musicPlayer.playMusic(EnumMusic.ROCK));
-        System.out.println(musicPlayer.playMusic(EnumMusic.JAZZ));
-        return "";
+        return "Computer " + id + " " + musicPlayer.playMusic();
     }
 }

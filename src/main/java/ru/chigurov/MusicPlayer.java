@@ -13,8 +13,11 @@ import java.util.Random;
 import static ru.chigurov.EnumMusic.CLASSICAL;
 import static ru.chigurov.EnumMusic.ROCK;
 
-@Component
 public class MusicPlayer {
+
+    private List<Music> genre;
+
+
     @Value("${musicPlayer.name}")
     private String name;
 
@@ -29,36 +32,36 @@ public class MusicPlayer {
         return volume;
     }
 
-    private ClassicalMusic classicalMusic;
-    private RockMusic rockMusic;
-    private JazzMusic jazzMusic;
 
-    @Autowired
-    public MusicPlayer(ClassicalMusic classicalMusic, RockMusic rockMusic, JazzMusic jazzMusic) {
-        this.classicalMusic = classicalMusic;
-        this.rockMusic = rockMusic;
-        this.jazzMusic = jazzMusic;
+
+    public MusicPlayer(List<Music> genre) {
+        this.genre = genre;
     }
 
 
-    public String playMusic(EnumMusic enumMusic){
+    public String playMusic() {
         Random random = new Random();
 
         // случайное целое число между 0 и 2
         int randomNumber = random.nextInt(3);
+        int randomNumb = random.nextInt(3);
 
+        return "Playing: " + genre.get(randomNumber).getSong().get(randomNumb);
+    }
+
+/*
         switch (enumMusic){
             case CLASSICAL:
-                return "Playing: " + classicalMusic.getSong().get(randomNumber);
+                return "Playing: " + genre.get(0).getSong().get(randomNumber);
             case ROCK:
-                return "Playing: " + rockMusic.getSong().get(randomNumber);
+                return "Playing: " + genre.get(1).getSong().get(randomNumber);
             case JAZZ:
-                return "Playing: " + jazzMusic.getSong().get(randomNumber);
+                return "Playing: " + genre.get(2).getSong().get(randomNumber);
             default:
                 return "Playing: no music";
         }
+*/
 
-    }
 
     /*private List<Music> musicList = new ArrayList<>();
     private String name;
