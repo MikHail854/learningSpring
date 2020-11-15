@@ -8,20 +8,21 @@
         http://www.springframework.org/schema/context
         http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/util https://www.springframework.org/schema/util/spring-util.xsd">
 
-    <context:property-placeholder location="classpath:musicPlayer.properties"/>
-
-
-    <bean id="musicBean"
-          class="ru.chigurov.ClassicalMusic"
-          init-method="doMyInit"
-          destroy-method="doMyDestroy"
-          scope="prototype"
-          factory-method="getClassicalMusic">
-
-    </bean>
+   <context:component-scan base-package="ru.chigurov"/>
 
 
 
+
+<!--    <bean id="musicBean"-->
+<!--          class="ru.chigurov.ClassicalMusic"-->
+<!--          init-method="doMyInit"-->
+<!--          destroy-method="doMyDestroy"-->
+<!--          scope="prototype"-->
+<!--          factory-method="getClassicalMusic">-->
+<!--    </bean>-->
+
+
+<!--    <context:property-placeholder location="classpath:musicPlayer.properties"/>-->
 <!--    <bean id="classicalBean"-->
 <!--          class="ru.chigurov.ClassicalMusic">-->
 <!--    </bean>-->
