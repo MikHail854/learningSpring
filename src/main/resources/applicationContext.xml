@@ -11,34 +11,45 @@
     <context:property-placeholder location="classpath:musicPlayer.properties"/>
 
 
-    <bean id="classicalBean"
-          class="ru.chigurov.ClassicalMusic">
-    </bean>
-
-    <bean id="rockBean"
-          class="ru.chigurov.RockMusic">
-    </bean>
-
-    <bean id="jazzBean"
-          class="ru.chigurov.JazzMusic">
-    </bean>
-
-
-    <bean id="musicPlayer"
-        class="ru.chigurov.MusicPlayer"
-        scope="prototype">
-
-        <property name="musicList">
-            <list>
-                <ref bean="classicalBean"/>
-                <ref bean="rockBean"/>
-                <ref bean="jazzBean"/>
-            </list>
-        </property>
-
-        <property name="name" value="${musicPlayer.name}"/>
-        <property name="volume" value="${musicPlayer.volume}"/>
+    <bean id="musicBean"
+          class="ru.chigurov.ClassicalMusic"
+          init-method="doMyInit"
+          destroy-method="doMyDestroy"
+          scope="prototype"
+          factory-method="getClassicalMusic">
 
     </bean>
+
+
+
+<!--    <bean id="classicalBean"-->
+<!--          class="ru.chigurov.ClassicalMusic">-->
+<!--    </bean>-->
+
+<!--    <bean id="rockBean"-->
+<!--          class="ru.chigurov.RockMusic">-->
+<!--    </bean>-->
+
+<!--    <bean id="jazzBean"-->
+<!--          class="ru.chigurov.JazzMusic">-->
+<!--    </bean>-->
+
+
+<!--    <bean id="musicPlayer"-->
+<!--        class="ru.chigurov.MusicPlayer"-->
+<!--        scope="prototype">-->
+
+<!--        <property name="musicList">-->
+<!--            <list>-->
+<!--                <ref bean="classicalBean"/>-->
+<!--                <ref bean="rockBean"/>-->
+<!--                <ref bean="jazzBean"/>-->
+<!--            </list>-->
+<!--        </property>-->
+
+<!--        <property name="name" value="${musicPlayer.name}"/>-->
+<!--        <property name="volume" value="${musicPlayer.volume}"/>-->
+
+<!--    </bean>-->
 
 </beans>
