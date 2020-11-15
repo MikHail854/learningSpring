@@ -1,7 +1,10 @@
 package ru.chigurov;
 
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
+import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,6 +18,16 @@ public class ClassicalMusic implements Music{
         sound.add("classical first song");
         sound.add("classical second song");
         sound.add("classical third song");
+    }
+
+    @PostConstruct
+    public void doMyInit(){
+        System.out.println("Doing my initialization");
+    }
+
+    @PreDestroy
+    public void doMyDestroy(){
+        System.out.println("Doing my destruction");
     }
 
     @Override
