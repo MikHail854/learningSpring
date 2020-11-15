@@ -6,6 +6,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 @Configuration
@@ -30,11 +31,7 @@ public class SpringConfig {
 
     @Bean
     public List<Music> genreMusic(){
-        List<Music> genre = new ArrayList<>();
-        genre.add(classicalMusic());
-        genre.add(rockMusic());
-        genre.add(jazzMusic());
-        return genre;
+        return Arrays.asList(classicalMusic(), rockMusic(), jazzMusic());
     }
 
     @Bean
